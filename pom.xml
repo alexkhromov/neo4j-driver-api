@@ -9,4 +9,46 @@
     <version>0.0.1-SNAPSHOT</version>
     <description>Test neo4j driver api</description>
 
+    <properties>
+        <java.version>11</java.version>
+        <neo4j.version>3.1.13</neo4j.version>
+        <lombok.version>1.18.8</lombok.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-http-driver</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-core</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
