@@ -1,10 +1,11 @@
 package khromov.alex.test.service;
 
 import khromov.alex.test.connection.Connection;
-import khromov.alex.test.entity.Sector;
-import org.neo4j.ogm.cypher.query.Pagination;
+import org.apache.commons.lang3.time.StopWatch;
+import org.neo4j.ogm.model.Result;
 
-import java.util.Collection;
+import static java.lang.System.out;
+import static java.util.Collections.emptyMap;
 
 public class SearchService {
 
@@ -14,12 +15,23 @@ public class SearchService {
         this.connection = connection;
     }
 
-    public Collection< Sector > search() {
+    public void search() {
 
-        Collection< Sector > sectors = connection.getSession().loadAll( Sector.class, new Pagination( 0, 25 ) );
+        StopWatch stopWatch = new StopWatch();
 
-        System.out.println( sectors );
+        stopWatch.start();
+        Result result = connection.getSession().query(
 
-        return sectors;
+                //"MATCH (c:Controller)-[:HAS_LOCATION]->(l:LocationArea)-[:HAS_CELL]->(ce:Cell)" +
+                //"-[:HAS_SECTOR]->(s:Sector{type:'4G', azimuth:'0'}) return c.name, count(s) as count",
+
+                "MATCH (c:Controller)-[:HAS_LOCATION]->(l:LocationArea)-[:HAS_CELL]->(ce:Cell)" +
+                "-[:HAS_SECTOR]->(s:Sector ) return count(s) as count",
+
+                emptyMap() );
+        stopWatch.stop();
+
+        out.println( stopWatch.toString() );
+        result.forEach( out::println );
     }
 }
