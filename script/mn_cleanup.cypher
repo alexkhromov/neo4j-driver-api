@@ -4,7 +4,7 @@ drop index on :Cell(id);
 drop index on :Sector(id);
 call apoc.periodic.iterate( "match ( c:Cell ) - [ cs:HAS_SECTOR ] -> ( s:Sector ) return cs", "detach delete cs", { batchSize:10000 } );
 call apoc.periodic.iterate( "match ( l:LocationArea ) - [ lc:HAS_CELL ] -> ( c:Cell ) return lc", "detach delete lc", { batchSize:10000 } );
-call apoc.periodic.iterate( "match( c:Controller ) - [ cl:HAS_LOCATION ] -> ( l:LocationArea ) return cl", "detach delete cl", { batchSize:10000 } );
+call apoc.periodic.iterate( "match ( c:Controller ) - [ cl:HAS_LOCATION ] -> ( l:LocationArea ) return cl", "detach delete cl", { batchSize:10000 } );
 call apoc.periodic.iterate( "match ( c:Controller ) return c", "detach delete c", { batchSize:10000 } );
 call apoc.periodic.iterate( "match ( l:LocationArea ) return l", "detach delete l", { batchSize:10000 } );
 call apoc.periodic.iterate( "match ( c:Cell ) return c", "detach delete c", { batchSize:10000 } );
