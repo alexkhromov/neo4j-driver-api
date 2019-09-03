@@ -14,7 +14,7 @@ public class Connection {
                 .uri( "http://neo4j:Neo4j@localhost:7474" )
                 .build();
 
-        sessionFactory = new SessionFactory( configuration, "khromov.alex.test.entity" );
+        sessionFactory = new SessionFactory( configuration, "test.entity" );
     }
 
     public Session getSession() {

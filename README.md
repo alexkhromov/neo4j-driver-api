@@ -25,7 +25,7 @@
 6. Optional - if neo4j installed as a service run command when server is stopped<br>
    neo4j update-service
    
-7. Use cypher scripts from folder _script_ to create or cleanup nodes and relationships
+7. Use cypher scripts from folder _neo4j-search/script_ to create or cleanup nodes and relationships
 
    for Windows<br>
    type <path-to>\mn_create.cypher | cypher-shell -u <username> -p <password> --format plain<br>
