@@ -22,11 +22,11 @@ public class SearchService {
         stopWatch.start();
         Result result = connection.getSession().query(
 
-                //"MATCH (c:Controller)-[:HAS_LOCATION]->(l:LocationArea)-[:HAS_CELL]->(ce:Cell)" +
-                //"-[:HAS_SECTOR]->(s:Sector{type:'4G', azimuth:'0'}) return c.name, count(s) as count",
-
                 "MATCH (c:Controller)-[:HAS_LOCATION]->(l:LocationArea)-[:HAS_CELL]->(ce:Cell)" +
-                "-[:HAS_SECTOR]->(s:Sector ) return count(s) as count",
+                "-[:HAS_SECTOR]->(s:Sector{type:'4G', azimuth:'0'}) return c.name, count(s) as count",
+
+                //"MATCH (c:Controller)-[:HAS_LOCATION]->(l:LocationArea)-[:HAS_CELL]->(ce:Cell)" +
+                //"-[:HAS_SECTOR]->(s:Sector ) return count(s) as count",
 
                 emptyMap() );
         stopWatch.stop();

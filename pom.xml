@@ -9,12 +9,15 @@
     <artifactId>db-benchmark</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>Test neo4j driver api</description>
+    <description>Database benchmark</description>
 
     <properties>
         <java.version>11</java.version>
+        <hibernate.version>5.4.4.Final</hibernate.version>
+        <mysql.version>8.0.17</mysql.version>
         <neo4j.version>3.1.13</neo4j.version>
         <lombok.version>1.18.8</lombok.version>
+        <commons.lang3.version>3.9</commons.lang3.version>
     </properties>
 
     <modules>
@@ -25,6 +28,18 @@
     <dependencyManagement>
 
         <dependencies>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.neo4j</groupId>
@@ -42,6 +57,12 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
             </dependency>
 
         </dependencies>

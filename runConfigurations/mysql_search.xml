@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mysql-search" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="khromov.alex.test.Application" />
+    <module name="mysql-search" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
