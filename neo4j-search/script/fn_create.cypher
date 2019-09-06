@@ -16,3 +16,10 @@ MATCH (ff1:Friend) - [:FRIEND_OF] - (f), (ff2:Friend) - [:FRIEND_OF] - (f)
 WHERE ff1.name =~ '\\D+\\d+-\\d+' AND ff2.name =~ '\\D+\\d+-\\d+'
 AND ff1.name <> ff2.name AND id(ff1) < id(ff2)
 CREATE (ff1) - [:FRIEND_OF] -> (ff2);
+
+UNWIND $names as name
+MATCH (ff1:Friend), (ff2:Friend)
+WHERE ff1.name =~ '\\D+\\d+-\\d+' AND ff2.name =~ '\\D+\\d+-\\d+'
+AND ff1.name STARTS WITH name AND ff2.name STARTS WITH name
+AND ff1.name <> ff2.name AND id(ff1) < id(ff2)
+CREATE (ff1) - [:FRIEND_OF] -> (ff2);
