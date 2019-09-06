@@ -1,0 +1,30 @@
+https://www.ionos.com/community/markdown-migration/use-case-neo4j-vs-mysql/
+- Graph databases are particularly useful for records which have a "many-to-many" relationship structure.
+
+https://stackoverflow.com/questions/2541891/is-it-a-good-idea-to-use-mysql-and-neo4j-together
+
+https://dzone.com/articles/mysql-vs-neo4j-large-scale
+
+https://maxdemarzi.com/2017/02/06/neo4j-is-faster-than-mysql-in-performing-recursive-query/
+https://github.com/maxdemarzi/distinct_network
+
+
+
+FIRST OF ALL
+https://graphaware.com/neo4j/2013/10/11/neo4j-bidirectional-relationships.html
+https://community.neo4j.com/t/return-2nd-degree-connections/7741
+
+- find user friends who knows each other:
+MATCH ( a:Friend ) - [ :FRIEND_OF ] -> ( b ) - [ :FRIEND_OF ] - ( c ), ( a ) - [ :FRIEND_OF ] - ( c )
+WHERE a.name = 'Michelle1'
+RETURN b, c
+
+
+- find friends of user friends who is not yet knows user
+MATCH ( a:Friend ) - [ :FRIEND_OF ] - ( b ) - [ :FRIEND_OF ] - ( c )
+WHERE a.name = 'Michelle1' and not (a) - [:FRIEND_OF] - (c)
+RETURN c
+or
+MATCH ( a:Friend ) - [ :FRIEND_OF*2 ] - ( c )
+WHERE a.name = 'Michelle1' and a <> c AND not (a) - [:FRIEND_OF] - (c)
+RETURN c
