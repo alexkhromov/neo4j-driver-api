@@ -20,7 +20,7 @@ FOREACH (i IN range(1, size($names)) |
 );
 
 MATCH (f1:Friend), (f2:Friend)
-WHERE f1.name =~ '\\D+\\d{1}' AND f2.name =~ '\\D+\\d{1}'
+WHERE f1.name =~ '\\D+\\d+' AND f2.name =~ '\\D+\\d+'
 AND f1.name <> f2.name AND id(f1) < id(f2)
 CREATE (f1) - [:FRIEND_OF] -> (f2);
 
