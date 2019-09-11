@@ -31,4 +31,4 @@
    type <path-to>\mn_create.cypher | cypher-shell -u <username> -p <password> --format plain<br>
    type <path-to>\mn_cleanup.cypher | cypher-shell -u <username> -p <password> --format plain
    
-8. Optional - copy _runConfigurations_ folder into _.idea_ folder in case of Intelij Idea usage
+8. Optional - copy _runConfigurations_ folder into _.idea_ folder in case of Intellij Idea usage

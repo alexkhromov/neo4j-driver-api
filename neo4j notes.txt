@@ -13,9 +13,23 @@ https://graphaware.com/neo4j/2013/10/11/neo4j-bidirectional-relationships.html
 https://community.neo4j.com/t/return-2nd-degree-connections/7741
 
 - find user friends who knows each other:
-MATCH (a:Friend) - [:FRIEND_OF] - (b) - [:FRIEND_OF] - (c), (a) - [:FRIEND_OF] - (c)
-WHERE a.name = 'Michelle1'
-RETURN b, c
+neo4j:
+	MATCH (a:Friend) - [:FRIEND_OF] - (b) - [:FRIEND_OF] - (c), (a) - [:FRIEND_OF] - (c)
+	WHERE a.name = 'Michelle1'
+	RETURN b, c
+mysql:
+	WITH ALL_FRIENDS_IDS AS (
+		SELECT FS1.FRIEND_TO AS FRIEND_ID FROM FRIEND AS F1
+		INNER JOIN FRIENDS AS FS1 ON F1.ID = FS1.FRIEND_OF
+		WHERE F1.NAME = 'Michelle1'
+			UNION ALL
+		SELECT FS2.FRIEND_OF AS FRIEND_ID FROM FRIEND AS F2
+		INNER JOIN FRIENDS AS FS2 ON F2.ID = FS2.FRIEND_TO
+		WHERE F2.NAME = 'Michelle1'
+	)
+	SELECT * FROM FRIENDS
+	WHERE FRIEND_OF IN (SELECT * FROM ALL_FRIENDS_IDS)
+	AND FRIEND_TO IN (SELECT * FROM ALL_FRIENDS_IDS)
 
 - find friends of user friends who is not yet knows user:
 MATCH (a:Friend) - [:FRIEND_OF] - (b) - [:FRIEND_OF] - (c)
