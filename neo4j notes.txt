@@ -67,8 +67,8 @@ mysql:
 - find user friends who friends only with user and user have more than 1 friend
 neo4j:
 	MATCH (a:Friend) - [:FRIEND_OF] - (b)
-    WHERE size((a) -- ()) > 1 AND size((b) -- ()) = 1 AND id(a) < id(b)
-    RETURN count(b)
+    WHERE size((a) -- ()) > 1 AND size((b) -- ()) = 1
+    RETURN count(b) AS COUNT
     //RETURN a, b
     //RETURN id(a) AS FRIEND_OF_ID, id(b) AS FRIEND_TO_ID, a.name AS FRIEND_OF_NAME, b.name AS FRIEND_TO_NAME
 mysql:
@@ -89,8 +89,9 @@ mysql:
 		SELECT FRIEND_ID FROM ALL_FRIENDS_COUNT
 	    WHERE COUNT > 1
 	)
-	SELECT FF.FRIEND_OF AS FRIEND_OF_ID, FF.FRIEND_TO AS FRIEND_TO_ID,
-	F_OF.NAME AS FRIEND_OF_NAME, F_TO.NAME AS FRIEND_TO_NAME FROM FRIENDS FF
+	SELECT COUNT(*) AS COUNT FROM FRIENDS FF
+    -- SELECT FF.FRIEND_OF AS FRIEND_OF_ID, FF.FRIEND_TO AS FRIEND_TO_ID,
+    -- F_OF.NAME AS FRIEND_OF_NAME, F_TO.NAME AS FRIEND_TO_NAME FROM FRIENDS FF
 	INNER JOIN FRIEND AS F_OF ON F_OF.ID = FF.FRIEND_OF
 	INNER JOIN FRIEND AS F_TO ON F_TO.ID = FF.FRIEND_TO
 	WHERE
