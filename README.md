@@ -1,3 +1,6 @@
+<strong>Environment: Windows 10, Java 11, Maven 3.6.0, neo4j 3.5.8, MySQL 8.0.17<strong>
+
+<strong>Steps for neo4j setup:<strong>
 1. Download and install Neo4j community server<br>
    https://neo4j.com/download-center/#community
    
@@ -27,10 +30,15 @@
    
 7. Use cypher scripts from folder _neo4j-search/script_ to create or cleanup nodes and relationships
 
-   for Windows<br>
+   mobile network<br>
    type <path-to>\mn_create.cypher | cypher-shell -u <username> -p <password> --format plain<br>
    type <path-to>\mn_cleanup.cypher | cypher-shell -u <username> -p <password> --format plain
    
+   friends network<br>
+   type <path-to>\fn_create.cypher | cypher-shell -u <username> -p <password> --format plain<br>
+   type <path-to>\fn_cleanup.cypher | cypher-shell -u <username> -p <password> --format plain
+   
 8. Optional - copy _runConfigurations_ folder into _.idea_ folder in case of Intellij Idea usage
 
-   https://drive.google.com/file/d/1UF0hf1I6UeLX7SE_qXhpFORh7rjD7hTW/view?usp=sharing
+   https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ
+   https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg
