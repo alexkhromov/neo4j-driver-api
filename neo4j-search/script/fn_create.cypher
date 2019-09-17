@@ -1,22 +1,25 @@
 :param names => ['Jennifer','Michelle','Tanya','Julie','Christie','Sophie','Amanda','Khloe','Sarah','Kaylee'];
 
 FOREACH (i IN range(1, size($names)) |
-  CREATE (f1:Friend{name:$names[i % size($names)] + i})
-  FOREACH (j IN range(1, size($names)) |
-	  CREATE (f1) - [:FRIEND_OF] -> (f2:Friend{name:$names[j % size($names)] + i + '-' + i})
-    FOREACH (k IN range(1, size($names)) |
-      CREATE (f2) - [:FRIEND_OF] -> (f3:Friend{name:$names[k % size($names)] + i + '-' + i + '-' + i})
-      FOREACH (l IN range(1, size($names)) |
-        CREATE (f3) - [:FRIEND_OF] -> (f4:Friend{name:$names[l % size($names)] + i + '-' + i + '-' + i + '-' + i})
-        FOREACH (m IN range(1, size($names)) |
-          CREATE (f4) - [:FRIEND_OF] -> (f5:Friend{name:$names[m % size($names)] + i + '-' + i + '-' + i + '-' + i + '-' + i})
-          FOREACH (n IN range(1, size($names)) |
-            CREATE (f5) - [:FRIEND_OF] -> (f6:Friend{name:$names[n % size($names)] + i + '-' + i + '-' + i + '-' + i + '-' + i + '-' + i})
-          )
+    CREATE (f1:Friend{name:$names[i % size($names)] + i})
+    FOREACH (j IN range(1, size($names)) |
+        CREATE (f1) - [:FRIEND_OF] -> (f2:Friend{name:$names[j % size($names)] + i + '-' + i})
+        FOREACH (k IN range(1, size($names)) |
+            CREATE (f2) - [:FRIEND_OF] -> (f3:Friend{name:$names[k % size($names)] + i + '-' + i + '-' + i})
+            FOREACH (l IN range(1, size($names)) |
+                CREATE (f3) - [:FRIEND_OF] ->
+                (f4:Friend{name:$names[l % size($names)] + i + '-' + i + '-' + i + '-' + i})
+                FOREACH (m IN range(1, size($names)) |
+                    CREATE (f4) - [:FRIEND_OF] ->
+                    (f5:Friend{name:$names[m % size($names)] + i + '-' + i + '-' + i + '-' + i + '-' + i})
+                    FOREACH (n IN range(1, size($names)) |
+                        CREATE (f5) - [:FRIEND_OF] ->
+                        (f6:Friend{name:$names[n % size($names)] + i + '-' + i + '-' + i + '-' + i + '-' + i + '-' + i})
+                    )
+                )
+            )
         )
-      )
     )
-  )
 );
 
 MATCH (f1:Friend), (f2:Friend)

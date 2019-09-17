@@ -1,2 +1,2 @@
-call apoc.periodic.iterate( "match ( f1:Friend ) - [f:FRIEND_OF ] -> ( f2:Friend ) return f", "detach delete f", { batchSize:10000 } );
-call apoc.periodic.iterate( "match ( f:Friend ) return f", "detach delete f", { batchSize:10000 } );
+CALL apoc.periodic.iterate("MATCH (f1:Friend) - [f:FRIEND_OF] -> (f2:Friend) RETURN f", "DETACH DELETE f", {batchSize:10000});
+CALL apoc.periodic.iterate("MATCH (f:Friend) RETURN f", "DETACH DELETE f", {batchSize:10000});
