@@ -32,3 +32,5 @@
    type <path-to>\mn_cleanup.cypher | cypher-shell -u <username> -p <password> --format plain
    
 8. Optional - copy _runConfigurations_ folder into _.idea_ folder in case of Intellij Idea usage
+
+   https://drive.google.com/file/d/1UF0hf1I6UeLX7SE_qXhpFORh7rjD7hTW/view?usp=sharing
