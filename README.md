@@ -37,8 +37,7 @@
    friends network<br>
    type <path-to>\fn_create.cypher | cypher-shell -u <username> -p <password> --format plain<br>
    type <path-to>\fn_cleanup.cypher | cypher-shell -u <username> -p <password> --format plain
-   
-8. Optional - copy _runConfigurations_ folder into _.idea_ folder in case of Intellij Idea usage
+ 
 
-   https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ
+   https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ<br>
    https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg

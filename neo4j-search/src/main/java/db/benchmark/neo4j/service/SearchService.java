@@ -1,26 +1,21 @@
-package khromov.alex.test.service;
+package db.benchmark.neo4j.service;
 
-import khromov.alex.test.connection.Connection;
-import org.apache.commons.lang3.time.StopWatch;
+import db.benchmark.neo4j.connection.Connection;
+import lombok.Builder;
 import org.neo4j.ogm.model.Result;
+import org.neo4j.ogm.session.Session;
 
-import static java.lang.System.out;
 import static java.util.Collections.emptyMap;
 
+@Builder
 public class SearchService {
 
     private Connection connection;
 
-    public SearchService( Connection connection ) {
-        this.connection = connection;
-    }
+    public Result search() {
 
-    public void search() {
-
-        StopWatch stopWatch = new StopWatch();
-
-        stopWatch.start();
-        Result result = connection.getSession().query(
+        Session session = connection.getSession();
+        Result result = session.query(
 
                 "MATCH (c:Controller)-[:HAS_LOCATION]->(l:LocationArea)-[:HAS_CELL]->(ce:Cell)" +
                 "-[:HAS_SECTOR]->(s:Sector{type:'4G', azimuth:'0'}) return c.name, count(s) as count",
@@ -29,9 +24,8 @@ public class SearchService {
                 //"-[:HAS_SECTOR]->(s:Sector ) return count(s) as count",
 
                 emptyMap() );
-        stopWatch.stop();
+        session.clear();
 
-        out.println( stopWatch.toString() );
-        result.forEach( out::println );
+        return result;
     }
 }

@@ -1,4 +1,4 @@
-package khromov.alex.test.entity;
+package db.benchmark.mysql.entity;
 
 import lombok.Data;
 

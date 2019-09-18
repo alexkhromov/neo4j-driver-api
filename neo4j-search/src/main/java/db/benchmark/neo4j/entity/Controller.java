@@ -1,4 +1,4 @@
-package khromov.alex.test.entity;
+package db.benchmark.neo4j.entity;
 
 import lombok.Data;
 import org.neo4j.ogm.annotation.GeneratedValue;

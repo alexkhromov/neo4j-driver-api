@@ -18,16 +18,31 @@
         <neo4j.version>3.1.13</neo4j.version>
         <lombok.version>1.18.8</lombok.version>
         <commons.lang3.version>3.9</commons.lang3.version>
+        <jmh.version>1.21</jmh.version>
+        <junit.version>5.5.2</junit.version>
     </properties>
 
     <modules>
         <module>neo4j-search</module>
         <module>mysql-search</module>
+        <module>db-benchmark-test</module>
     </modules>
 
     <dependencyManagement>
 
         <dependencies>
+
+            <dependency>
+                <groupId>khromov.alex.test</groupId>
+                <artifactId>mysql-search</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>khromov.alex.test</groupId>
+                <artifactId>neo4j-search</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -63,6 +78,24 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit.version}</version>
             </dependency>
 
         </dependencies>
