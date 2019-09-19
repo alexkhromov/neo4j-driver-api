@@ -11,11 +11,28 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import static db.benchmark.mysql.connection.Connection.buildConnectionFN;
 import static db.benchmark.mysql.connection.Connection.buildConnectionMN;
 import static db.benchmark.neo4j.connection.Connection.*;
+import static db.benchmark.test.TestQuery.NEO4J_QUERY_FN;
+import static db.benchmark.test.TestQuery.NEO4J_QUERY_MN;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.openjdk.jmh.annotations.Mode.AverageTime;
 import static org.openjdk.jmh.annotations.Mode.Throughput;
 
 public class DBBenchmarkTest {
+
+    @Test
+    public void runJmhBenchmark() throws RunnerException {
+
+        Options options = new OptionsBuilder()
+                .include(DBBenchmarkTest.class.getSimpleName())
+                .warmupIterations(1)
+                .measurementIterations(2)
+                .mode(Throughput)
+                .mode(AverageTime)
+                .forks(1)
+                .build();
+
+        new Runner(options).run();
+    }
 
     @State(Scope.Thread)
     public static class MySqlStateMN {
@@ -121,21 +138,6 @@ public class DBBenchmarkTest {
         }
     }
 
-    @Test
-    public void runJmhBenchmark() throws RunnerException {
-
-        Options options = new OptionsBuilder()
-                .include(DBBenchmarkTest.class.getSimpleName())
-                .warmupIterations(1)
-                .measurementIterations(2)
-                .mode(Throughput)
-                .mode(AverageTime)
-                .forks(1)
-                .build();
-
-        new Runner(options).run();
-    }
-
     @Benchmark
     @Group("MN")
     @OutputTimeUnit(SECONDS)
@@ -147,14 +149,14 @@ public class DBBenchmarkTest {
     @Group("MN")
     @OutputTimeUnit(SECONDS)
     public void neo4jHttpSearchMN(Neo4jHttpStateMN state) {
-        state.searchService.searchMN();
+        state.searchService.search(NEO4J_QUERY_MN);
     }
 
     @Benchmark
     @Group("MN")
     @OutputTimeUnit(SECONDS)
     public void neo4jBoltSearchMN(Neo4jBoltStateMN state) {
-        state.searchService.searchMN();
+        state.searchService.search(NEO4J_QUERY_MN);
     }
 
     @Benchmark
@@ -168,13 +170,13 @@ public class DBBenchmarkTest {
     @Group("FN")
     @OutputTimeUnit(SECONDS)
     public void neo4jHttpSearchFN(Neo4jHttpStateFN state) {
-        state.searchService.searchFN();
+        state.searchService.search(NEO4J_QUERY_FN);
     }
 
     @Benchmark
     @Group("FN")
     @OutputTimeUnit(SECONDS)
     public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
-        state.searchService.searchFN();
+        state.searchService.search(NEO4J_QUERY_FN);
     }
 }

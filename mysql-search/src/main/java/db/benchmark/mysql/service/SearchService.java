@@ -16,7 +16,7 @@ public class SearchService {
         Session session = connection.getSession();
         List<?> result = session.createQuery(
 
-                "SELECT c.name, COUNT(s) FROM Sector AS s " +
+                "SELECT c.name AS NAME, COUNT(s) AS COUNT FROM Sector AS s " +
                 "INNER JOIN s.cell AS ce INNER JOIN ce.locationArea AS la INNER JOIN la.controller AS c " +
                 "WHERE s.type = '4G' AND s.azimuth = '0' " +
                 "GROUP BY c.name"
