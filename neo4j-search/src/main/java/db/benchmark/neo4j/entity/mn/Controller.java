@@ -1,4 +1,4 @@
-package db.benchmark.neo4j.entity;
+package db.benchmark.neo4j.entity.mn;
 
 import lombok.Data;
 import org.neo4j.ogm.annotation.GeneratedValue;
@@ -18,6 +18,6 @@ public class Controller {
 
     private String name;
 
-    @Relationship( type = "HAS_LOCATION" )
-    private List< LocationArea > locationAreas;
+    @Relationship(type = "HAS_LOCATION")
+    private List<LocationArea> locationAreas;
 }

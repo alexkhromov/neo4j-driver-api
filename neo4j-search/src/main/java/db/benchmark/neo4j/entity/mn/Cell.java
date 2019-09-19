@@ -1,4 +1,4 @@
-package db.benchmark.neo4j.entity;
+package db.benchmark.neo4j.entity.mn;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,9 +14,9 @@ import static org.neo4j.ogm.annotation.Relationship.INCOMING;
 
 @NodeEntity
 @Data
-@ToString( exclude = "controller" )
-@EqualsAndHashCode( exclude = "controller" )
-public class LocationArea {
+@ToString(exclude = "locationArea")
+@EqualsAndHashCode(exclude = "locationArea")
+public class Cell {
 
     @Id
     @GeneratedValue
@@ -24,9 +24,9 @@ public class LocationArea {
 
     private String name;
 
-    @Relationship( type = "HAS_LOCATION", direction = INCOMING )
-    private Controller controller;
+    @Relationship(type = "HAS_CELL", direction = INCOMING)
+    private LocationArea locationArea;
 
-    @Relationship( type = "HAS_CELL" )
-    private List< Cell > cells;
+    @Relationship(type = "HAS_SECTOR")
+    private List<Sector> sectors;
 }

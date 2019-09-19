@@ -36,6 +36,26 @@ public class Connection {
         return new Connection(sessionFactory);
     }
 
+    public static Connection buildHttpConnectionFN() {
+
+        Configuration configuration = new Configuration.Builder()
+                .uri("http://neo4j:Neo4j@localhost:7474")
+                .build();
+
+        SessionFactory sessionFactory = new SessionFactory(configuration, "db.benchmark.neo4j.fn.entity");
+
+        return new Connection(sessionFactory);
+    }
+
+    public static Connection buildBoltConnectionFN() {
+
+        BoltDriver boltDriver = new BoltDriver(driver("bolt://localhost:7687", basic("neo4j", "Neo4j")));
+
+        SessionFactory sessionFactory = new SessionFactory(boltDriver, "db.benchmark.neo4j.fn.entity");
+
+        return new Connection(sessionFactory);
+    }
+
     public Session getSession() {
         return sessionFactory.openSession();
     }
