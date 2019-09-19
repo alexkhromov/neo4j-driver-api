@@ -9,6 +9,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import static db.benchmark.mysql.connection.Connection.buildMNConnection;
+import static db.benchmark.neo4j.connection.Connection.buildHttpConnectionMN;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.openjdk.jmh.annotations.Mode.AverageTime;
 import static org.openjdk.jmh.annotations.Mode.Throughput;
@@ -16,23 +17,54 @@ import static org.openjdk.jmh.annotations.Mode.Throughput;
 public class DBBenchmarkTest {
 
     @State(Scope.Thread)
-    public static class BenchmarkState {
+    public static class MySqlStateMN {
 
-        SearchService mysqlSearchService;
-        db.benchmark.neo4j.service.SearchService neo4jSearchService;
+        SearchService searchService;
 
         @Setup(Level.Trial)
         public void doSetup() {
 
-            mysqlSearchService = SearchService
+            searchService = SearchService
                     .builder()
                     .connection(buildMNConnection())
                     .build();
+        }
+    }
 
-            neo4jSearchService = db.benchmark.neo4j.service.SearchService
+    @State(Scope.Thread)
+    public static class Neo4jHttpStateMN {
+
+        db.benchmark.neo4j.service.SearchService searchService;
+
+        @Setup(Level.Trial)
+        public void doSetup() {
+
+            searchService = db.benchmark.neo4j.service.SearchService
                     .builder()
-                    .connection(db.benchmark.neo4j.connection.Connection.buildMNConnection())
+                    .connection(buildHttpConnectionMN())
                     .build();
+        }
+    }
+
+    @State(Scope.Thread)
+    public static class Neo4jBoltStateMN {
+
+        db.benchmark.neo4j.connection.Connection connection;
+        db.benchmark.neo4j.service.SearchService searchService;
+
+        @Setup(Level.Trial)
+        public void doSetup() {
+
+            connection = db.benchmark.neo4j.connection.Connection.buildBoltConnectionMN();
+            searchService = db.benchmark.neo4j.service.SearchService
+                    .builder()
+                    .connection(connection)
+                    .build();
+        }
+
+        @TearDown(Level.Trial)
+        public void doTearDown() {
+            connection.closeSession();
         }
     }
 
@@ -52,14 +84,23 @@ public class DBBenchmarkTest {
     }
 
     @Benchmark
+    @Group("MN")
     @OutputTimeUnit(SECONDS)
-    public void mysqlMNSearch(BenchmarkState state) {
-        state.mysqlSearchService.search();
+    public void mysqlSearchMN(MySqlStateMN state) {
+        state.searchService.search();
     }
 
     @Benchmark
+    @Group("MN")
     @OutputTimeUnit(SECONDS)
-    public void neo4jMNSearch(BenchmarkState state) {
-        state.neo4jSearchService.search();
+    public void neo4jHttpSearchMN(Neo4jHttpStateMN state) {
+        state.searchService.search();
+    }
+
+    @Benchmark
+    @Group("MN")
+    @OutputTimeUnit(SECONDS)
+    public void neo4jBoltSearchMN(Neo4jBoltStateMN state) {
+        state.searchService.search();
     }
 }

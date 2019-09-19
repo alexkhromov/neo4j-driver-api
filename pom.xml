@@ -15,7 +15,7 @@
         <java.version>11</java.version>
         <hibernate.version>5.4.4.Final</hibernate.version>
         <mysql.version>8.0.17</mysql.version>
-        <neo4j.version>3.1.13</neo4j.version>
+        <neo4j.version>3.1.14</neo4j.version>
         <lombok.version>1.18.8</lombok.version>
         <commons.lang3.version>3.9</commons.lang3.version>
         <jmh.version>1.21</jmh.version>
@@ -59,6 +59,12 @@
             <dependency>
                 <groupId>org.neo4j</groupId>
                 <artifactId>neo4j-ogm-http-driver</artifactId>
+                <version>${neo4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-bolt-driver</artifactId>
                 <version>${neo4j.version}</version>
             </dependency>
 
