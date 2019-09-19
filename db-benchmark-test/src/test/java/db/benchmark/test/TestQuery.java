@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class TestQuery {
 
-    private static final Properties QUERY_HOLDER = new Properties();;
+    private static final Properties QUERY_HOLDER = new Properties();
 
     static {
         try (InputStream is = TestQuery.class.getClassLoader().getResourceAsStream("queries.properties")) {

@@ -1,5 +1,6 @@
 package db.benchmark.neo4j.connection;
 
+import lombok.AllArgsConstructor;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.drivers.bolt.driver.BoltDriver;
 import org.neo4j.ogm.session.Session;
@@ -8,50 +9,27 @@ import org.neo4j.ogm.session.SessionFactory;
 import static org.neo4j.driver.v1.AuthTokens.basic;
 import static org.neo4j.driver.v1.GraphDatabase.driver;
 
+@AllArgsConstructor
 public class Connection {
 
     private final SessionFactory sessionFactory;
 
-    private Connection(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public static Connection buildHttpConnectionMN() {
+    public static Connection buildHttpConnection(String uri, String entityPackage) {
 
         Configuration configuration = new Configuration.Builder()
-                .uri("http://neo4j:Neo4j@localhost:7474")
+                .uri(uri)
                 .build();
 
-        SessionFactory sessionFactory = new SessionFactory(configuration, "db.benchmark.neo4j.entity");
+        SessionFactory sessionFactory = new SessionFactory(configuration, entityPackage);
 
         return new Connection(sessionFactory);
     }
 
-    public static Connection buildBoltConnectionMN() {
+    public static Connection buildBoltConnection(String uri, String user, String password, String entityPackage) {
 
-        BoltDriver boltDriver = new BoltDriver(driver("bolt://localhost:7687", basic("neo4j", "Neo4j")));
+        BoltDriver boltDriver = new BoltDriver(driver(uri, basic(user, password)));
 
-        SessionFactory sessionFactory = new SessionFactory(boltDriver, "db.benchmark.neo4j.entity");
-
-        return new Connection(sessionFactory);
-    }
-
-    public static Connection buildHttpConnectionFN() {
-
-        Configuration configuration = new Configuration.Builder()
-                .uri("http://neo4j:Neo4j@localhost:7474")
-                .build();
-
-        SessionFactory sessionFactory = new SessionFactory(configuration, "db.benchmark.neo4j.fn.entity");
-
-        return new Connection(sessionFactory);
-    }
-
-    public static Connection buildBoltConnectionFN() {
-
-        BoltDriver boltDriver = new BoltDriver(driver("bolt://localhost:7687", basic("neo4j", "Neo4j")));
-
-        SessionFactory sessionFactory = new SessionFactory(boltDriver, "db.benchmark.neo4j.fn.entity");
+        SessionFactory sessionFactory = new SessionFactory(boltDriver, entityPackage);
 
         return new Connection(sessionFactory);
     }

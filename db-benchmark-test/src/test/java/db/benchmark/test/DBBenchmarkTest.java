@@ -11,6 +11,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import static db.benchmark.mysql.connection.Connection.buildConnectionFN;
 import static db.benchmark.mysql.connection.Connection.buildConnectionMN;
 import static db.benchmark.neo4j.connection.Connection.*;
+import static db.benchmark.test.TestConfiguration.*;
 import static db.benchmark.test.TestQuery.NEO4J_QUERY_FN;
 import static db.benchmark.test.TestQuery.NEO4J_QUERY_MN;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -74,7 +75,7 @@ public class DBBenchmarkTest {
 
             searchService = db.benchmark.neo4j.service.SearchService
                     .builder()
-                    .connection(buildHttpConnectionMN())
+                    .connection(buildHttpConnection(NEO4J_HTTP_URI, NEO4J_MN_ENTITY_PACKAGE))
                     .build();
         }
     }
@@ -89,7 +90,7 @@ public class DBBenchmarkTest {
 
             searchService = db.benchmark.neo4j.service.SearchService
                     .builder()
-                    .connection(buildHttpConnectionFN())
+                    .connection(buildHttpConnection(NEO4J_HTTP_URI, NEO4J_FN_ENTITY_PACKAGE))
                     .build();
         }
     }
@@ -103,7 +104,7 @@ public class DBBenchmarkTest {
         @Setup(Level.Trial)
         public void doSetup() {
 
-            connection = buildBoltConnectionMN();
+            connection = buildBoltConnection(NEO4J_BOLT_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_MN_ENTITY_PACKAGE);
             searchService = db.benchmark.neo4j.service.SearchService
                     .builder()
                     .connection(connection)
@@ -125,7 +126,7 @@ public class DBBenchmarkTest {
         @Setup(Level.Trial)
         public void doSetup() {
 
-            connection = buildBoltConnectionFN();
+            connection = buildBoltConnection(NEO4J_BOLT_URI, NEO4J_USER, NEO4J_PASSWORD, NEO4J_FN_ENTITY_PACKAGE);
             searchService = db.benchmark.neo4j.service.SearchService
                     .builder()
                     .connection(connection)
