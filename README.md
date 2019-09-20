@@ -1,6 +1,7 @@
 **Environment: Windows 10, Java 11, Maven 3.6.0, neo4j 3.5.8, MySQL 8.0.17**
 
-<strong>Steps for neo4j setup:<strong>
+**Steps for neo4j setup:**
+
 1. Download and install Neo4j community server<br>
    https://neo4j.com/download-center/#community
    
@@ -38,6 +39,15 @@
    type <path-to>\fn_create.cypher | cypher-shell -u <username> -p <password> --format plain<br>
    type <path-to>\fn_cleanup.cypher | cypher-shell -u <username> -p <password> --format plain
  
+**Steps for MySQL setup:**
 
-   https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ<br>
+1. Download and install MySQL Installer<br>
+   https://dev.mysql.com/downloads/windows/installer/
+	
+   [friends network dump](https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ)
    https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg
+   
+![alt text](https://drive.google.com/open?id=1-XmopJMuwGZdlPVvd7GDeouITdNFMNaB)<br>
+![alt text](https://drive.google.com/open?id=1yXswkGjxeqxKNZvQf5exTdEPa28fs_d7)<br>
+![alt text](https://drive.google.com/open?id=1fvkAGO-Ll5Uqqyd9OGBT69dPxma1O3HF)
+![alt text](https://drive.google.com/open?id=1nUxyxZKBqw4-QsnBlFWn3jx5sY2CNeXg)
