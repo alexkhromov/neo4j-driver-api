@@ -20,4 +20,10 @@ public class TestQuery {
 
     public static final String NEO4J_QUERY_FN_1 = QUERY_HOLDER.getProperty("neo4j.query.fn.1");
     public static final String MYSQL_QUERY_FN_1 = QUERY_HOLDER.getProperty("mysql.query.fn.1");
+
+    public static final String NEO4J_QUERY_FN_2 = QUERY_HOLDER.getProperty("neo4j.query.fn.2");
+    public static final String MYSQL_QUERY_FN_2 = QUERY_HOLDER.getProperty("mysql.query.fn.2");
+
+    public static final String NEO4J_QUERY_FN_3 = QUERY_HOLDER.getProperty("neo4j.query.fn.3");
+    public static final String MYSQL_QUERY_FN_3 = QUERY_HOLDER.getProperty("mysql.query.fn.3");
 }
