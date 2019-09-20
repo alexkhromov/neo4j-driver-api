@@ -1,13 +1,13 @@
 package db.benchmark.neo4j.service;
 
 import db.benchmark.neo4j.connection.Connection;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import org.neo4j.ogm.model.Result;
 import org.neo4j.ogm.session.Session;
 
 import static java.util.Collections.emptyMap;
 
-@Builder
+@AllArgsConstructor
 public class SearchService {
 
     private Connection connection;
