@@ -1,4 +1,4 @@
-<strong>Environment: Windows 10, Java 11, Maven 3.6.0, neo4j 3.5.8, MySQL 8.0.17<strong>
+**Environment: Windows 10, Java 11, Maven 3.6.0, neo4j 3.5.8, MySQL 8.0.17**
 
 <strong>Steps for neo4j setup:<strong>
 1. Download and install Neo4j community server<br>
