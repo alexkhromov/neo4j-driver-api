@@ -51,12 +51,21 @@
 	
 	[mysql server settings used for test](https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg)
    
-Benchmark results:
 
-![mobile network](https://drive.google.com/open?id=1-XmopJMuwGZdlPVvd7GDeouITdNFMNaB)
+**Benchmark results:**
 
-![friends network case 1](https://drive.google.com/open?id=1yXswkGjxeqxKNZvQf5exTdEPa28fs_d7)
+Mobile network - count 4G sectors with azimuth 0 for each controller
 
-![friends network case 2](https://drive.google.com/open?id=1fvkAGO-Ll5Uqqyd9OGBT69dPxma1O3HF)
+![](db-benchmark-test/images/mn_result.png)
 
-![friends network case 3](https://drive.google.com/open?id=1nUxyxZKBqw4-QsnBlFWn3jx5sY2CNeXg)
+Friends network - find user friends who knows each other
+
+![](db-benchmark-test/images/fn_1_result.png)
+
+Friends network - find friends of user friends who is not yet knows user
+
+![](db-benchmark-test/images/fn_2_result.png)
+
+Friends network - find user friends who friends only with user and user have more than 1 friend
+
+![](db-benchmark-test/images/fn_3_result.png)
