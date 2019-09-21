@@ -43,11 +43,20 @@
 
 1. Download and install MySQL Installer<br>
    https://dev.mysql.com/downloads/windows/installer/
-	
-   [friends network dump](https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ)
-   https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg
    
-![alt text](https://drive.google.com/open?id=1-XmopJMuwGZdlPVvd7GDeouITdNFMNaB)<br>
-![alt text](https://drive.google.com/open?id=1yXswkGjxeqxKNZvQf5exTdEPa28fs_d7)<br>
-![alt text](https://drive.google.com/open?id=1fvkAGO-Ll5Uqqyd9OGBT69dPxma1O3HF)
-![alt text](https://drive.google.com/open?id=1nUxyxZKBqw4-QsnBlFWn3jx5sY2CNeXg)
+2. Use mysql scripts from folder _mysql-search/script_ to create or cleanup schemas
+	
+	for friends network is better to import dump from below link (script for create takes about 30 mins)<br>
+	[friends network dump](https://drive.google.com/open?id=1f1PIzBRK2PH-EmeNN5iyvfvXhdChUXJZ)
+	
+	[mysql server settings used for test](https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg)
+   
+Benchmark results:
+
+![mobile network](https://drive.google.com/open?id=1-XmopJMuwGZdlPVvd7GDeouITdNFMNaB)
+
+![friends network case 1](https://drive.google.com/open?id=1yXswkGjxeqxKNZvQf5exTdEPa28fs_d7)
+
+![friends network case 2](https://drive.google.com/open?id=1fvkAGO-Ll5Uqqyd9OGBT69dPxma1O3HF)
+
+![friends network case 3](https://drive.google.com/open?id=1nUxyxZKBqw4-QsnBlFWn3jx5sY2CNeXg)
