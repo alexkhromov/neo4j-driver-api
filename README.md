@@ -63,7 +63,7 @@ Hello, this is some text to fill in this, [here](#place-2), is a link to the sec
 
 Place one has the fun times of linking here, but I can also link back [here](#place-1).
 
-#### [Benchmark results](#benchmark-results)
+#### Benchmark results: [](#benchmark-results)
 
 Mobile network - count 4G sectors with azimuth 0 for each controller
 
