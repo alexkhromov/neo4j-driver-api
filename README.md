@@ -54,7 +54,7 @@
 <br/>
 <br/>
 
-#### [Benchmark results:](#benchmark-results)
+#### Benchmark results:[](#benchmark-results)
 
 Mobile network - count 4G sectors with azimuth 0 for each controller
 
