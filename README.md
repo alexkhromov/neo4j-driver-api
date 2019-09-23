@@ -52,7 +52,7 @@
 	[mysql server settings used for test](https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg)
    
 
-<a href="#results:**">**Benchmark results:**</a>
+<a href="#results">**Benchmark results:**</a>
 
 Mobile network - count 4G sectors with azimuth 0 for each controller
 
