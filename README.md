@@ -54,6 +54,8 @@
 
 <a href="#results">**Benchmark results:**</a>
 
+[Benchmark results:](#results)
+
 Mobile network - count 4G sectors with azimuth 0 for each controller
 
 ![](db-benchmark-test/images/mn_result.png)
