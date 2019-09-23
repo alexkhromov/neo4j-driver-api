@@ -52,7 +52,6 @@
 	[mysql server settings used for test](https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg)
    
 <br/>
-<br/>
 
 #### Benchmark results:[](#benchmark-results)
 
