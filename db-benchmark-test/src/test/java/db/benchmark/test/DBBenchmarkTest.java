@@ -21,8 +21,8 @@ import static org.openjdk.jmh.annotations.Mode.Throughput;
 public class DBBenchmarkTest {
 
     @ParameterizedTest
-    @ValueSource(classes = {MNTestGroup.class, FNTestGroup_1.class, FNTestGroup_2.class,
-            FNTestGroup_3.class, FNTestGroup_4.class, FNTestGroup_5.class, FNTestGroup_6.class})
+    @ValueSource(classes = {MNTestGroup.class, FNTestGroup_1.class, FNTestGroup_2.class, FNTestGroup_3.class,
+            FNTestGroup_4.class, FNTestGroup_5.class, FNTestGroup_6.class, FNTestGroup_7.class})
     public void runJmhBenchmark(Class<?> testGroup) throws RunnerException {
 
         Options options = new OptionsBuilder()
@@ -292,6 +292,30 @@ public class DBBenchmarkTest {
         @OutputTimeUnit(SECONDS)
         public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
             state.searchService.search(NEO4J_QUERY_FN_6);
+        }
+    }
+
+    public static class FNTestGroup_7 {
+
+        @Benchmark
+        @Group("FN_7")
+        @OutputTimeUnit(SECONDS)
+        public void mysqlSearchFN(MySqlStateFN state) {
+            state.searchService.search(MYSQL_QUERY_FN_7);
+        }
+
+        @Benchmark
+        @Group("FN_7")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jHttpSearchFN(Neo4jHttpStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_7);
+        }
+
+        @Benchmark
+        @Group("FN_7")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_7);
         }
     }
 }
