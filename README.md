@@ -55,18 +55,34 @@
 
 #### [Benchmark results:](#benchmark-results)
 
-Mobile network - count 4G sectors with azimuth 0 for each controller
+1. Mobile network - count 4G sectors with azimuth 0 for each controller
 
 ![](db-benchmark-test/images/mn_result.png)
 
-Friends network - find user friends who knows each other
+2. Friends network - find user friends who knows each other
 
 ![](db-benchmark-test/images/fn_1_result.png)
 
-Friends network - find friends of user friends who is not yet knows user
+3. Friends network - find friends of user friends who is not yet knows user
 
 ![](db-benchmark-test/images/fn_2_result.png)
 
-Friends network - find user friends who friends only with user and user have more than 1 friend
+4. Friends network - find friends of*3-level friends of user friends who is not yet knows user
 
 ![](db-benchmark-test/images/fn_3_result.png)
+
+5. Friends network - find friends of*4-level friends of user friends who is not yet knows user
+
+![](db-benchmark-test/images/fn_4_result.png)
+
+6. Friends network - find friends of*5-level friends of user friends who is not yet knows user
+
+![](db-benchmark-test/images/fn_5_result.png)
+
+7. Friends network - count all friendships between all Michelle's and Tanya's
+
+![](db-benchmark-test/images/fn_6_result.png)
+
+8. Friends network - find user friends who friends only with user and user have more than 1 friend
+
+![](db-benchmark-test/images/fn_7_result.png)
