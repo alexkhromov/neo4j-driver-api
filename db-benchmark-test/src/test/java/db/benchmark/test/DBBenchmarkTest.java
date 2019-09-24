@@ -21,7 +21,8 @@ import static org.openjdk.jmh.annotations.Mode.Throughput;
 public class DBBenchmarkTest {
 
     @ParameterizedTest
-    @ValueSource(classes = {MNTestGroup.class, FNTestGroup_1.class, FNTestGroup_2.class, FNTestGroup_3.class})
+    @ValueSource(classes = {MNTestGroup.class, FNTestGroup_1.class, FNTestGroup_2.class,
+            FNTestGroup_3.class, FNTestGroup_4.class, FNTestGroup_5.class, FNTestGroup_6.class})
     public void runJmhBenchmark(Class<?> testGroup) throws RunnerException {
 
         Options options = new OptionsBuilder()
@@ -219,6 +220,78 @@ public class DBBenchmarkTest {
         @OutputTimeUnit(SECONDS)
         public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
             state.searchService.search(NEO4J_QUERY_FN_3);
+        }
+    }
+
+    public static class FNTestGroup_4 {
+
+        @Benchmark
+        @Group("FN_4")
+        @OutputTimeUnit(SECONDS)
+        public void mysqlSearchFN(MySqlStateFN state) {
+            state.searchService.search(MYSQL_QUERY_FN_4);
+        }
+
+        @Benchmark
+        @Group("FN_4")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jHttpSearchFN(Neo4jHttpStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_4);
+        }
+
+        @Benchmark
+        @Group("FN_4")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_4);
+        }
+    }
+
+    public static class FNTestGroup_5 {
+
+        @Benchmark
+        @Group("FN_5")
+        @OutputTimeUnit(SECONDS)
+        public void mysqlSearchFN(MySqlStateFN state) {
+            state.searchService.search(MYSQL_QUERY_FN_5);
+        }
+
+        @Benchmark
+        @Group("FN_5")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jHttpSearchFN(Neo4jHttpStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_5);
+        }
+
+        @Benchmark
+        @Group("FN_5")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_5);
+        }
+    }
+
+    public static class FNTestGroup_6 {
+
+        @Benchmark
+        @Group("FN_6")
+        @OutputTimeUnit(SECONDS)
+        public void mysqlSearchFN(MySqlStateFN state) {
+            state.searchService.search(MYSQL_QUERY_FN_6);
+        }
+
+        @Benchmark
+        @Group("FN_6")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jHttpSearchFN(Neo4jHttpStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_6);
+        }
+
+        @Benchmark
+        @Group("FN_6")
+        @OutputTimeUnit(SECONDS)
+        public void neo4jBoltSearchFN(Neo4jBoltStateFN state) {
+            state.searchService.search(NEO4J_QUERY_FN_6);
         }
     }
 }
