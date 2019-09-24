@@ -51,6 +51,14 @@
 	
 	[mysql server settings used for test](https://drive.google.com/open?id=1nvF4XyQOKvAEPfQI_NApdwcv2VK7Ahzg)
    
+**Mobile network graph sample:**
+
+![](db-benchmark-test/images/mn_sample_graph.png)
+
+**Friends network graph sample:**
+
+![](db-benchmark-test/images/fn_sample_graph.png)
+   
 <br/>
 
 #### [Benchmark results:](#benchmark-results)
