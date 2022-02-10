@@ -13,7 +13,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <hibernate.version>5.4.4.Final</hibernate.version>
+        <hibernate.version>5.4.24.Final</hibernate.version>
         <mysql.version>8.0.17</mysql.version>
         <neo4j.version>3.1.14</neo4j.version>
         <lombok.version>1.18.8</lombok.version>
